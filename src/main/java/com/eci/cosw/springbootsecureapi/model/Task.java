@@ -1,9 +1,13 @@
 package com.eci.cosw.springbootsecureapi.model;
 
+import java.util.Date;
+
 public class Task {
     private int id;
     private String description;
     private Responsible responsible;
+    private Date dueDate;
+    private String status;
 
     public Task(){
 
@@ -31,5 +35,21 @@ public class Task {
 
     public void setResponsible(Responsible responsible) {
         this.responsible = responsible;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

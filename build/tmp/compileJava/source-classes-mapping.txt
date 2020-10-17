@@ -1,7 +1,7 @@
-com/eci/cosw/springbootsecureapi/model/Task.java
- com.eci.cosw.springbootsecureapi.model.Task
-com/eci/cosw/springbootsecureapi/controller/TaskController.java
- com.eci.cosw.springbootsecureapi.controller.TaskController
+com/eci/cosw/springbootsecureapi/service/UserServiceImpl.java
+ com.eci.cosw.springbootsecureapi.service.UserServiceImpl
+com/eci/cosw/springbootsecureapi/service/UserService.java
+ com.eci.cosw.springbootsecureapi.service.UserService
 com/eci/cosw/springbootsecureapi/controller/SampleAPIController.java
  com.eci.cosw.springbootsecureapi.controller.SampleAPIController
 com/eci/cosw/springbootsecureapi/model/User.java
@@ -15,7 +15,7 @@ com/eci/cosw/springbootsecureapi/config/JwtFilter.java
  com.eci.cosw.springbootsecureapi.config.JwtFilter
 com/eci/cosw/springbootsecureapi/model/Responsible.java
  com.eci.cosw.springbootsecureapi.model.Responsible
-com/eci/cosw/springbootsecureapi/service/UserService.java
- com.eci.cosw.springbootsecureapi.service.UserService
-com/eci/cosw/springbootsecureapi/service/UserServiceImpl.java
- com.eci.cosw.springbootsecureapi.service.UserServiceImpl
+com/eci/cosw/springbootsecureapi/model/Task.java
+ com.eci.cosw.springbootsecureapi.model.Task
+com/eci/cosw/springbootsecureapi/controller/TaskController.java
+ com.eci.cosw.springbootsecureapi.controller.TaskController
