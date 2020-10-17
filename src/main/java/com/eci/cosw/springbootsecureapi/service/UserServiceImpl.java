@@ -21,8 +21,7 @@ public class UserServiceImpl
 
 
     @Autowired
-    public UserServiceImpl()
-    {
+    public UserServiceImpl() {
     }
 
     @PostConstruct

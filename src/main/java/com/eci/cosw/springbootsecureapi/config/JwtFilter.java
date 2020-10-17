@@ -3,6 +3,7 @@ package com.eci.cosw.springbootsecureapi.config;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
+import org.apache.http.HttpStatus;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -41,7 +42,11 @@ public class JwtFilter
 
             if ( authHeader == null || !authHeader.startsWith( "Bearer " ) )
             {
-                throw new ServletException( "Missing or invalid Authorization header" );
+                response.setStatus(HttpStatus.SC_UNAUTHORIZED);
+                response.getOutputStream().print("No autorizado");
+                response.getOutputStream().flush();
+                return ;
+                //throw new ServletException( "Missing or invalid Authorization header" );
             }
 
             final String token = authHeader.substring( 7 );

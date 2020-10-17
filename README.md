@@ -20,15 +20,22 @@ If you don't have the *curl* utility installed, try using the *Postman* applicat
 
 http://localhost:8080/api/test
 
+![img](img/2.PNG)
+
 Then try to locate the code fragment where the exception is thrown.
 
 4. Comment the line 13 *@Bean* on the *SpringBootSecureApiApplication* class. Re-run the project and go to the endpoint again:
 
 http://localhost:8080/api/test
+
+![img](img/1.PNG)
                     
-Why do you think it works now? Discuss your findings with your classmates.                    
+Why do you think it works now? Discuss your findings with your classmates.
+
+No funcionaba por que trataba de realizar operaciones sobre un string y manda un error ya que en las cabeceras no se pasa la autenticacion                    
                     	
 5. Implement the logic to verify the user's credentials on the *UserController* and the *UserServiceImpl* classes.
+
 
 6. Add the *TaskController* and services implemented on the previous lab. Ensure the endpoints are exposed under the */api* path. 
 

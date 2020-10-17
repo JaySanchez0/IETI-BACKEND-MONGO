@@ -16,7 +16,6 @@ public class SpringBootSecureApiApplication {
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setFilter( new JwtFilter() );
 		registrationBean.addUrlPatterns( "/api/*" );
-
 		return registrationBean;
 	}
 
