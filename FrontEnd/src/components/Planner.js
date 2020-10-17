@@ -28,6 +28,7 @@ import Dialog from '@material-ui/core/Dialog';
 import AddIcon from '@material-ui/icons/Add';
 import { Zoom } from '@material-ui/core';
 import Modal from './Modal';
+import Axios from 'axios';
 
 const drawerWidth = 240;
 const useStyles2 = makeStyles((theme) => ({
@@ -88,10 +89,17 @@ function Planner(props) {
   const [tasks,setTasks] = React.useState([]);
 
   var updateView = ()=>{
-    fetch("https://task-planner-app.azurewebsites.net/api/task?code=6d6gIMumCJ9iw8uWgtCmDNYnAuxsSXbPJ7C3HxU1u1YivTA1A6zD6g==")
-    .then(res=>res.json()).then((data)=>{
-      setTasks(data);
+    /*fetch("https://murmuring-scrubland-22576.herokuapp.com/api/task",{
+      headers:{"Authorization":"Bearer "+localStorage.getItem("token")}
+    })*/
+    Axios.get("https://murmuring-scrubland-22576.herokuapp.com/api/task",{
+      headers:{"Authorization":"Bearer "+localStorage.getItem("token")}
+    })
+    .then((data)=>{
+      setTasks(data.data);
       console.log("update");
+    }).catch(e=>{
+      setTasks([]);
     });
   }
 
@@ -123,14 +131,18 @@ function Planner(props) {
   );
     const container = window !== undefined ? () => window().document.body : undefined;
     const addTask = (task)=>{
-      fetch("https://task-planner-app.azurewebsites.net/api/task?code=6d6gIMumCJ9iw8uWgtCmDNYnAuxsSXbPJ7C3HxU1u1YivTA1A6zD6g==",{
+      /*fetch("https://murmuring-scrubland-22576.herokuapp.com/api/task",{
         method:"POST",
         body:JSON.stringify(task),
-        headers:{"Content-Type":"application/json"},
+        headers:{"Content-Type":"application/json","Authorization":"Bearer "+localStorage.getItem("token")},
         mode:"cors"
-      }).then(resp => resp.text()).then(()=>{
+      })*/
+      Axios.post("https://murmuring-scrubland-22576.herokuapp.com/api/task",task,{
+        headers:{"Content-Type":"application/json","Authorization":"Bearer "+localStorage.getItem("token")}
+      })
+      .then(resp => resp.text()).then(()=>{
         updateView();
-      }).catch(er=>alert("No se pudo añadir esta nueva tarea"));
+      }).catch(er=>updateView());
       setOpenModal(false);
     }
   return (

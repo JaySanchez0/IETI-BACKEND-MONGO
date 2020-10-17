@@ -1,5 +1,28 @@
 # 2.2 Spring Boot Secure API
 
+### Presentado por:
+
+Jeisson G. Sanchez R.
+
+### Heroku Back Deploy
+
+[ver](https://murmuring-scrubland-22576.herokuapp.com)
+
+### Front deploy Firebase
+
+[ver](https://task-planner-c360d.firebaseapp.com/)
+
+
+### Datos Login
+
+Email: test@mail.com
+Password: password
+
+### Enunciado de lab
+
+[ver](https://github.com/ieti-eci/2.2-spring-boot-secure-api-react)
+
+
 **Goals**
 
 * Implement a secure API using the JSON Web Token open standard (RFC 7519). 

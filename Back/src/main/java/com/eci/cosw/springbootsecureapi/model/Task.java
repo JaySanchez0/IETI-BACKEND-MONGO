@@ -6,7 +6,7 @@ public class Task {
     private int id;
     private String description;
     private Responsible responsible;
-    private Date dueDate;
+    private String dueDate;
     private String status;
 
     public Task(){
@@ -37,11 +37,11 @@ public class Task {
         this.responsible = responsible;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 

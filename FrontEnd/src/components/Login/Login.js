@@ -3,12 +3,24 @@ import {Redirect} from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import {Button, TextField, Snackbar, SnackbarContent} from '@material-ui/core';
 
+import Axios from 'axios';
+
 function start(user,password,setCorrect){
-    if(localStorage.getItem("users")==null) {
+    Axios.post("https://murmuring-scrubland-22576.herokuapp.com/user/login",
+            {"username":user,"password":password},{
+                headers:{"Content-type":"application/json"}
+    }).then((obj)=>{
+        console.log(obj);
+        localStorage.setItem("token",obj.data.accessToken);
+        localStorage.setItem("isLogged",true);
+        localStorage.setItem("name",user.name);
+        localStorage.setItem("email",user.email);
+        setCorrect("");
+    }).catch(e=>{
         setCorrect(false);
-        return ;
-    }
-    var user = getUser(user,password);
+    });
+
+    /*var user = getUser(user,password);
     console.log(user);
     if(user!=null){
         localStorage.setItem("isLogged",true);
@@ -17,32 +29,14 @@ function start(user,password,setCorrect){
         setCorrect("");
     }else{
         setCorrect(false);
-    }
+    }*/
 }
 
-function getUser(email,password){
-    var users = JSON.parse(localStorage.getItem("users"));
-    for(var i=0;i<users.length;i++){
-        console.log(users[i]);
-        if(users[i].email === email && users[i].password===password){
-            return users[i];
-        }
-    }
-    return null;
-}
 export default function Login(props){
     const [user,setUser] = useState("");
     const [pw,setPW] = useState("");
     const [reg,setReg] = useState(false);
     const [correct,setCorrect] = useState(true);
-    React.useEffect(()=>{
-        console.log("Effect");
-        fetch("https://rocky-sands-24100.herokuapp.com/user")
-        .then(response=>response.json()).then((data)=>{
-            console.log(data);
-            localStorage.setItem("users",JSON.stringify(data));
-        }).catch(err=>alert("Error"));
-    },[]);
     if(localStorage.getItem("isLogged")){
         return <Redirect to="/planer"></Redirect>;
     }

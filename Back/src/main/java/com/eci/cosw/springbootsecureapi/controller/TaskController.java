@@ -20,20 +20,23 @@ public class TaskController {
         try {
             String resp = Unirest.get("https://task-planner-app.azurewebsites.net/api/task?code=6d6gIMumCJ9iw8uWgtCmDNYnAuxsSXbPJ7C3HxU1u1YivTA1A6zD6g==")
                     .asString().getBody().toString();
+            System.out.println(resp);
             return ResponseEntity.ok(mapper.readValue(resp,Task[].class));
         }catch (Exception e){
-            return ResponseEntity.badRequest().build();
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error");
         }
     }
 
     @PostMapping
     public ResponseEntity<?> addTask(@RequestBody Task task){
         try {
-            Unirest.post("https://task-planner-app.azurewebsites.net/api/task?code=6d6gIMumCJ9iw8uWgtCmDNYnAuxsSXbPJ7C3HxU1u1YivTA1A6zD6g==")
+            System.out.println(Unirest.post("https://task-planner-app.azurewebsites.net/api/task?code=6d6gIMumCJ9iw8uWgtCmDNYnAuxsSXbPJ7C3HxU1u1YivTA1A6zD6g==")
                     .header("Content-Type", "application/json")
-                    .body(mapper.writeValueAsString(task)).getBody().toString();
+                    .body(mapper.writeValueAsString(task)).asString().getStatus());
             return ResponseEntity.accepted().build();
         }catch (Exception e){
+            e.printStackTrace();
             return  ResponseEntity.noContent().build();
         }
     }
