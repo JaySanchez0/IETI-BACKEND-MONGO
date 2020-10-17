@@ -57,7 +57,7 @@ http://localhost:8080/api/test
                     
 Why do you think it works now? Discuss your findings with your classmates.
 
-No funcionaba por que trataba de realizar operaciones sobre un string y manda un error ya que en las cabeceras no se pasa la autenticacion                    
+Enviaba un error, ya que en la clase filter se diseño para enviar una excepcion cuando el header de autenticacion no se encuentra                
                     	
 5. Implement the logic to verify the user's credentials on the *UserController* and the *UserServiceImpl* classes.
 
